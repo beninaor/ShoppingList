@@ -226,6 +226,20 @@ button {
 }
 
 .buttonAddItem{
+ min-height: 50px; 
+  min-width: 50px;
+  width: 50px;
+  border-radius: 15%; 
+  border-color: transparent;
+  background-color: green;
+  color: #fff;
+  font-size: 100%; 
+  padding-bottom: 6px;
+   border-width: 0; 
+  /* margin-right: 0px; */
+}
+
+/* .buttonAddItem{
   min-height: 50px;
   min-width: 50px;
   width: 50px;
@@ -236,8 +250,7 @@ button {
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
-}
-
+} */
 
 .buttoDell{
   width: 80%;
@@ -254,7 +267,8 @@ input[type="text"] {
   background: transparent;
   font-size: 20px;
   font-weight: 200;
-  width: 313px;
+  width: 80%;
+  /* width: 313px; */
 }
 
 input[type="text"]:focus {
