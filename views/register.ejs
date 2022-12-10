@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+
+
+
+
+
+  <div class=" modal modal-tour position-static d-block  py-5" tabindex="-1" role="dialog" id="modalTour">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-body p-5">
+          
+          <a href="/" class="bi bi-cart4 icon fa-4x"></a>
+
+          <h1 class="h3 mb-3 fw-normal text-center">Please sign up</h1>
+          <form action="/register" method="POST">
+            <div class="form-floating">
+           
+              <input  name="firstName" class="form-control top" placeholder="name" required autofocus>
+              <label for="floatingInput">Name</label>
+            </div>
+    
+            <div class="form-floating">
+              <input type="email" name="username" class="form-control middle" placeholder="email" required autofocus>
+              <label for="floatingInput">Email</label>
+            </div>
+    
+            <div class="form-floating">
+              <input type="password" name="password" class="form-control bottom" placeholder="password" required>
+              <label for="floatingPassword">Password</label>
+            </div>
+    
+    
+            <button class="btn btn-lg btn-primary mt-5 w-100" type="submit">Register</button>
+            <br>
+            
+            <a href="/login" class="btn btn-lg btn-secondary mt-5 w-100 "> Login</a>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>

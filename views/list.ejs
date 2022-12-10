@@ -1,0 +1,185 @@
+<%- include('partials/header') %>
+
+
+
+
+    <div class="modal modal-tour position-static  d-block  py-1" tabindex="-1" role="dialog" id="modalTour">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-body p-5">
+
+                    <div class="box-list-title">
+                        <h1 class="text-center list-title" style="color: white">
+                            List of
+                            <%= listOf %>
+                        </h1>
+                    </div>
+
+                    <div class="areUsure" id="sureTologout">
+                        <div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog"
+                            id="modalSheet">
+                            <div class="modal-dialog-sure-log-out" role="document">
+                                <div class="modal-content rounded-4 shadow">
+                                    <div class="modal-header border-bottom-0">
+
+                                    </div>
+                                    <div class="modal-body py-0">
+                                        <h1 class="text-center">Sure?</h1>
+                                    </div>
+                                    <div class="modal-footer flex-column border-top-0">
+                                        <button onclick="beakToList()" type="button"
+                                            class="btn btn-lg btn-primary w-100 mx-0 mb-2">Back </button>
+                                        <form class="button" action="/logout" method="POST">
+                                            <button type="submit" class="btn btn-lg btn-light w-100 mx-0"
+                                                data-bs-dismiss="modal">Yes</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="areUsure" id="sureToDelete">
+                        <div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog"
+                            id="modalSheet">
+                            <div class="modal-dialog-sure-log-out" role="document">
+                                <div class="modal-content rounded-4 shadow">
+                                    <div class="modal-header border-bottom-0">
+
+                                    </div>
+                                    <div class="modal-body py-0">
+                                        <h1 class="text-center">Delete?</h1>
+                                    </div>
+                                    <div class="modal-footer flex-column border-top-0">
+                                        <button onclick="beakToList()" type="button"
+                                            class="btn btn-lg btn-primary w-100 mx-0 mb-2">Back </button>
+
+                                            <form class="button" action="/delete" method="POST">
+                                                <button class="btn btn-lg btn-danger w-100 mx-0 " id="IDdeleteButton" type="submit"
+                                                    onclick="deleteCheckedItems()" name="list_updated" value="" >Yes, Delete</button>
+
+                                            </form>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <% list_items.forEach((item)=> {%>
+                            <div class="item product">
+                                <input class="delete-checkbox" name="item_value" value="<%= item %>" type="checkbox"
+                                    id="myCheck" onchange="chkbox(this)">
+                                <p style="font-family: Cursive;">
+                                    <%= item %>
+                                </p>
+
+                            </div>
+                            <%})%>
+
+
+
+                                <div class="item" id="deleteButton" style="display:none">
+                                    <form class="item" action="/delete" method="POST">
+                                
+                                            <input class="btn btn-danger" type="button" onclick='sureDelete()' value="Delete" style='margin-right:16px'/> 
+                                            <input class="btn btn-dark" type="button" onclick='selects()' value="Select All" style='margin-right:16px'/>  
+                                            <input class="btn btn-secondary" type="button" onclick='deSelect()' value="Deselect All" />
+                                    </form>
+
+
+                                </div>
+
+                                <form class="item" action="/list" method="POST">
+                                    <input type="text" name="newItem" placeholder="New item" autocomplete="off">
+                                    <button class="buttonAddItem" type="submit" name="list">+</button>
+
+                                </form>
+
+                                <script type="text/javascript">
+
+                                    const list_items_to_keep = [];
+                                    function deleteCheckedItems() {
+                                        var listItems = document.querySelectorAll(".product");
+                                        listItems.forEach((item) => {
+                                            const checkBox = item.querySelector('.delete-checkbox');
+
+                                            if (!checkBox.checked) {
+
+                                                list_items_to_keep.push(checkBox.value);
+
+                                            }
+                                        })
+                                        const dellButton = document.getElementById("IDdeleteButton");
+
+                                        dellButton.value = list_items_to_keep;
+
+                                    }
+
+
+                                    var numOfChecked = 0;
+                                    function chkbox(item) {
+                                        var deleteButton = document.getElementById("deleteButton");
+                                        if (item.checked == true) {
+                                            numOfChecked++;
+                                        } else if (item.checked == false) {
+                                            numOfChecked--;
+                                        }
+
+                                        if (numOfChecked > 0) {
+                                            deleteButton.style.display = "block";
+                                        } else {
+                                            deleteButton.style.display = "none";
+                                        }
+
+                                    }
+
+                                    function sureLogout() {
+                                        document.getElementById("sureTologout").style.display = "block";
+                                    }
+
+                                    function sureDelete(){
+                                        document.getElementById("sureToDelete").style.display = "block";
+                                    }
+                                    function beakToList() {
+                                        document.getElementById("sureTologout").style.display = "none";
+                                        document.getElementById("sureToDelete").style.display = "none";
+                                    }
+
+
+                                    function selects() {
+                                        var ele = document.getElementsByName('item_value');
+                                        for (var i = 0; i < ele.length; i++) {
+                                            if (ele[i].type == 'checkbox')
+                                                ele[i].checked = true;
+                                        }
+                                    }
+                                    function deSelect() {
+                                        var ele = document.getElementsByName('item_value');
+                                        for (var i = 0; i < ele.length; i++) {
+                                            if (ele[i].type == 'checkbox')
+                                                ele[i].checked = false;
+
+                                        }
+                                    }
+
+                                </script>
+
+
+
+                    </div>
+
+                    <button onclick="sureLogout()" class="btn btn-lg btn-light w-100 mx-0"
+                        data-bs-dismiss="modal">Logout</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('partials/footer') %>

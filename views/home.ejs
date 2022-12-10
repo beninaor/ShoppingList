@@ -1,0 +1,104 @@
+<%- include('partials/header') %>
+
+
+  <div class=" modal modal-tour position-static d-block  py-5" tabindex="-1" role="dialog" id="modalTour">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-body p-5">
+
+          <div class="about" id="about">
+            <div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog" id="modalSheet">
+              <div class="modal-dialog-sure-log-out" role="document">
+                <div class="modal-content rounded-4 shadow">
+                  <div class="modal-header border-bottom-0">
+
+                  </div>
+                  <div class="modal-body py-0">
+                    <h1 class="text-center">About</h1>
+                    <p>This project can be used for your shopping list.</p>
+                    <p> A shared list will be made by sharing your password with the users you want to be able to edit the list.</p>
+                    <p>  A deleted list is not saved anywhere, so you can't go back to it.<br>
+                       You must save the password yourself, we do not save it anywhere and there is no way to recover it.</p>
+                      
+                     
+                      
+                    <p>Easy to use, hope you enjoy.</p>  
+                  </div>
+                  <div class="modal-footer flex-column border-top-0">
+                    <button onclick="beakToHome()" type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Ok,nice
+                    </button>
+                 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="bi bi-cart4 icon fa-8x" onclick="showAbout()"></button>
+
+
+          <h1 class="display-5 text-center">My shopping list</h1>
+          <p class="display-8 text-center">Register or Login to create a shopping list</p>
+
+          <a class="btn btn-lg btn-primary mt-5 w-100" href="/login" role="button">Login</a>
+          <a class="btn btn-lg btn-secondary mt-5 w-100" href="/register" role="button">Register</a>
+
+          <p class="mt-5 mb-3 text-senter" style="text-align: center">Beni Naor &copy; 2022–2023</p>
+          <!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>  -->
+          <script>
+
+            document.getElementById("about").style.display = "none";
+            function showAbout() {
+              document.getElementById("about").style.display = "block";
+            }
+            function beakToHome() {
+              document.getElementById("about").style.display = "none";
+            }
+          </script>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 
+<div class=" modal modal-tour position-static d-block  py-5" tabindex="-1" role="dialog" id="modalTour">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-body p-5">
+        <i class="bi bi-cart4 icon fa-8x"></i>
+
+        <h1 class="display-5 text-center">My shopping list</h1>
+        <p  class="display-8 text-center">Register or Login to create a shopping list</p>
+
+        <a class="btn btn-lg btn-primary mt-5 w-100" href="/login" role="button">Login</a>
+        <a class="btn btn-lg btn-secondary mt-5 w-100" href="/register" role="button">Register</a>
+        
+        <p class="mt-5 mb-3 text-senter" style="text-align: center">Beni Naor &copy; 2022–2023</p>
+        <button type="button" class="btn btn-outline-secondary">Secondary</button>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+  <%- include('partials/footer') %>
