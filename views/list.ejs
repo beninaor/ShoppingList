@@ -55,11 +55,12 @@
                                         <button onclick="beakToList()" type="button"
                                             class="btn btn-lg btn-primary w-100 mx-0 mb-2">Back </button>
 
-                                            <form class="button" action="/delete" method="POST">
-                                                <button class="btn btn-lg btn-danger w-100 mx-0 " id="IDdeleteButton" type="submit"
-                                                    onclick="deleteCheckedItems()" name="list_updated" value="" >Yes, Delete</button>
+                                        <form class="button" action="/delete" method="POST">
+                                            <button class="btn btn-lg btn-danger w-100 mx-0 " id="IDdeleteButton"
+                                                type="submit" onclick="deleteCheckedItems()" name="list_updated"
+                                                value="">Yes, Delete</button>
 
-                                            </form>
+                                        </form>
 
 
 
@@ -83,16 +84,29 @@
 
 
 
-                                <div class="item" id="deleteButton" style="display:none">
-                                    <form class="item" action="/delete" method="POST">
-                                
-                                            <input class="btn btn-danger" type="button" onclick='sureDelete()' value="Delete" style='margin-right:16px'/> 
-                                            <input class="btn btn-dark" type="button" onclick='selects()' value="Select All" style='margin-right:16px'/>  
-                                            <input class="btn btn-secondary" type="button" onclick='deSelect()' value="Deselect All" />
-                                    </form>
+                                <div class="item" id="deleteButton" >
 
+                                    <div class="item col-md-12 row">
+                                        <div >
+                                            <div>
+                                                
+                                                <form action="/delete" method="POST">
+                                                    
+                                                    <input class="col-xs-4 btn btn-danger" type="button" onclick='sureDelete()'
+                                                    style='margin-left:5%' value="Delete"  />
+                                                    <input class="col-xs-4 btn btn-dark" type="button" onclick='selects()'
+                                                    style='margin-left:5%'    value="Select All"  />
+                                                    <input class="col-xs-4 btn btn-secondary" type="button" onclick='deSelect()'
+                                                    style='margin-left:5%'    value="Deselect All" />
+                                                </form>
 
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+
+
 
                                 <form class="item" action="/list" method="POST">
                                     <input type="text" name="newItem" placeholder="New item" autocomplete="off">
@@ -101,7 +115,7 @@
                                 </form>
 
                                 <script type="text/javascript">
-
+                                   document.getElementById("deleteButton").style.display = "none";
                                     const list_items_to_keep = [];
                                     function deleteCheckedItems() {
                                         var listItems = document.querySelectorAll(".product");
@@ -142,7 +156,7 @@
                                         document.getElementById("sureTologout").style.display = "block";
                                     }
 
-                                    function sureDelete(){
+                                    function sureDelete() {
                                         document.getElementById("sureToDelete").style.display = "block";
                                     }
                                     function beakToList() {
